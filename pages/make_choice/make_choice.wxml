@@ -1,0 +1,38 @@
+<view class="hole_page">
+  <view class="title">
+    <text>我来帮你做出选择</text>
+  </view>
+  
+
+  <view class="option_list">
+    <view wx:for="{{optionList}}" class="option">
+      <text>{{item.text}}</text>
+    </view>
+    <view wx:if="{{optionList.length === 0}}" class="tips">
+      <text>给我一点选择啊</text>
+    </view>
+  </view>
+
+
+  <view class="buttons">
+    <button bindtap="makeChoices">创建选项</button>
+    <button bindtap="choose">做出你的选择</button>
+  </view>
+</view>
+
+ 
+<view class="mask" wx:if="{{showDialogue}}">
+    <view class="make_choices">
+      <input placeholder="请输入选项" bindinput="getChoice"/>
+      <button bindtap="confirmChoice">确认</button>
+      <button bindtap="refuseChoice">取消</button>
+    </view>
+</view>
+
+
+<view class="mask" wx:if="{{showResult}}">
+  <view class="result_text">
+    <text>{{randomResult.text}}</text>
+  </view>
+  <button bindtap="goBack">返回</button>
+</view>
