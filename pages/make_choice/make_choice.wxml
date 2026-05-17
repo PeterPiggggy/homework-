@@ -1,33 +1,61 @@
-<view class="hole_page">
-  <view class="title">
+<view class="hole-page">
+  <view class="welcome-notice">
     <text>我来帮你做出选择</text>
+    <text>(｡•̀ᴗ-)✧</text>
   </view>
   
 
-  <view class="option_list">
-    <view wx:for="{{optionList}}" class="option">
-      <text>{{item.text}}</text>
+  <view class="option-list">
+    <view wx:for="{{optionList}}" wx:key="text" class="option">
+      <view class="option-icon">
+        <image src="{{item.icon}}" style="width:150rpx;height:150rpx"></image>
+      </view>
+      <view class="option-text"><text>{{item.text}}</text></view>
     </view>
-    <view wx:if="{{optionList.length === 0}}" class="tips">
+
+    <view wx:if="{{optionList.length === 0}}" class="option-list-tips">
       <text>给我一点选择啊</text>
+      <text>(°ロ°) </text>
     </view>
   </view>
 
 
-  <view class="buttons">
+  <view class="main-buttons">
     <button bindtap="makeChoices">创建选项</button>
     <button bindtap="choose">做出你的选择</button>
   </view>
 </view>
 
  
+
 <view class="mask" wx:if="{{showDialogue}}">
-    <view class="make_choices">
-      <input placeholder="请输入选项" bindinput="getChoice"/>
+  <view class="make-options">
+    <view class="make-options-tips">
+      <text>鉴于您的选择困难</text>
+      <text>图标选择的第一个选项是随机项</text>
+      <text>(•̀ᴗ•́)و ̑̑  </text>
+    </view>
+
+    <input placeholder="输入选项吧！(ง •_•)ง" placeholder-style="color:#000000; font-size:50rpx" bindinput="getChoice" class="input-options"/>
+      
+    <view class="choose-icons">
+      <view class="option-icon" bindtap="randomlyChooseIcon">
+        <image src="../../img/刷新.png" style="width:160rpx;height:160rpx"></image>
+      </view>
+
+      <view wx:for="{{optionIconsPath}}" wx:key="index" class="option-icon" bindtap="chooseIcon" data-image="{{item.path}}">
+        <image src="{{item.path}}" style="width:160rpx; height:160rpx"></image>
+        <view class="icon-mask" wx:if="{{tempIcon === item.path}}"></view>
+      </view>
+    </view>
+
+    <view class="make-options-buttons">
       <button bindtap="confirmChoice">确认</button>
       <button bindtap="refuseChoice">取消</button>
     </view>
+  </view>
 </view>
+
 
 
 <view class="mask" wx:if="{{showResult}}">

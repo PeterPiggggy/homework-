@@ -1,43 +1,176 @@
-.hole_page {
+.hole-page {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  
 }
 
 
-.title {
-  width: 750rpx;
+
+.welcome-notice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 650rpx;
   height: 200rpx;
   background-color: #696969;
+
+  margin: 50rpx 50rpx 100rpx 50rpx;
+  border: 5rpx solid #000000;
+  border-radius: 20rpx;
+  
+  font-size: 50rpx;
+  color: #ffffff;
+}
+
+
+
+.option-list {
+  overflow-y: auto;
+
+  width: 650rpx;
+  height: 740rpx;
+  background-color: #b3acac;
+
+  margin: 0rpx 50rpx 100rpx 50rpx;
+  border: 5rpx solid #000000;
+  border-radius: 20rpx;
+}
+.option-list .option {
+  display: flex;
+  flex-direction: row;
+
+  width: 600rpx;
+  min-height: 150rpx;
+  background-color: #ffffff;
+  
+  margin: 10rpx 25rpx 0rpx 25rpx;
+  border-radius: 20rpx;
+}
+.option .option-icon {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 150rpx;
+  min-height: 150rpx;
+}
+.option .option-text {
+  width: 450rpx;
+  min-height: 150rpx;
+
+  border-left: 5rpx solid #000000;
+
+  font-size: 50rpx;
+  color: #000000;
+  word-break: break-all;
+}
+.option-list .option-list-tips {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 300rpx;
+
+  font-size: 50rpx;
+  color: #000000;
+}
+
+
+
+.make-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.make-options .make-options-tips {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 700rpx;
+  height: 250rpx;
+  background-color: #696969;
+
+  margin-bottom: 50rpx;
+  border: 5rpx solid #000000;
+  border-radius: 20rpx;
+
+  font-size: 50rpx;
+  color: #ffffff;
+}
+.make-options .input-options {
+  width: 600rpx;
+  height: 100rpx;
+  background-color: #ffffff;
+
+  border-radius: 20rpx;
+  border: 5rpx solid #000000;
+  margin-bottom: 50rpx;
+
+  color: #000000;
   font-size: 50rpx;
 }
+.make-options .choose-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  width: 600rpx;
+  height: 600rpx;
+}
+.make-options .choose-icons .option-icon {
+  position: relative;
+
+  width: 160rpx;
+  height: 160rpx;
+  background-color: #ffffff;
+
+  border: 5px solid #000000;
+  border-radius: 20rpx;
+}
+.make-options .choose-icons .option-icon .icon-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background-color: #69696980;
+}
+.make-options .make-options-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  
+  width: 750rpx;
+
+  margin-top: 100rpx;
+}
+
+
+
+.main-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
 
 
 .mask {
   position: fixed;
-  background-color: #69696980;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
   z-index: 9999;
+
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-
-.make_choices {
-  background-color: #ffffff;
-  position: absolute;
-}
-
-
-.buttons {
-  display: flex;
-  flex-direction: row;
+  background-color: #69696980;
 }
