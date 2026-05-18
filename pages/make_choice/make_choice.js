@@ -2,9 +2,9 @@ Page({
   data: {
     optionList: [],
     showDialogue: false,
-    tempOption: "",
     showResult: false,
-    randomResult: null,
+    showDeleteIndex: null,
+    showDeleteMask: false,
     optionIconsPath: [
       {path: "../../img/options_icon/步数.png"},
       {path: "../../img/options_icon/地址.png"},
@@ -15,7 +15,34 @@ Page({
       {path: "../../img/options_icon/饮食.png"},
       {path: "../../img/options_icon/咨询.png"}
     ],
-    tempIcon: ""
+    tempIcon: "",
+    tempOption: "",
+    randomResult: null,
+  },
+
+
+
+  showDeleteMenu(e) {
+    const optionDeleteIndex = e.currentTarget.dataset.index
+    this.setData({
+      showDeleteIndex: optionDeleteIndex,
+      showDeleteMask: true,
+    })
+  },
+  missDeleteMenu() {
+    this.setData({
+      showDeleteIndex: null,
+      showDeleteMask: false
+    })
+  },
+  deleteOption() {
+    const index = this.data.showDeleteIndex
+    const newOptionList = this.data.optionList.filter((item, i) => i !== index)
+    this.setData({
+      optionList: newOptionList,
+      showDeleteIndex: null,
+      showDeleteMask: false
+    })
   },
 
 
@@ -73,7 +100,10 @@ Page({
 
 
   goBack() {
-    this.setData({showResult: false})
+    this.setData({
+      showResult: false,
+      randomResult: null
+    })
   },
 
 

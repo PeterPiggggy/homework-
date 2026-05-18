@@ -1,16 +1,21 @@
 <view class="hole-page">
-  <view class="welcome-notice">
+  <view class="welcome-tips">
     <text>我来帮你做出选择</text>
     <text>(｡•̀ᴗ-)✧</text>
   </view>
-  
+
 
   <view class="option-list">
-    <view wx:for="{{optionList}}" wx:key="text" class="option">
+    <view wx:for="{{optionList}}" wx:key="text" class="option" bindtap="showDeleteMenu" data-index="{{index}}">
       <view class="option-icon">
         <image src="{{item.icon}}" style="width:150rpx;height:150rpx"></image>
       </view>
       <view class="option-text"><text>{{item.text}}</text></view>
+
+      <view class="delete-menu-mask" wx:if="{{showDeleteMask}}" catchtap="missDeleteMenu"></view>
+      <view class="delete-menu" catchtap="deleteOption" wx:if="{{showDeleteIndex === index}}">
+        <text>删除</text>
+      </view>
     </view>
 
     <view wx:if="{{optionList.length === 0}}" class="option-list-tips">
@@ -26,7 +31,7 @@
   </view>
 </view>
 
- 
+
 
 <view class="mask" wx:if="{{showDialogue}}">
   <view class="make-options">
@@ -59,8 +64,22 @@
 
 
 <view class="mask" wx:if="{{showResult}}">
-  <view class="result_text">
-    <text>{{randomResult.text}}</text>
+  <view class="result">
+    <view class="result-tips">
+      <text>我帮你选出来了！！！</text>
+      <text>(๑˘︶˘๑)</text>
+      <text>▼ ▼ ▼ ▼ ▼ ▼ ▼ ▼ ▼ ▼</text>
+    </view>
+
+    <view class="option-chosen">
+      <view class="icon-chosen">
+        <image src="{{randomResult.icon}}" style="width:200rpx;height:200rpx"></image>
+      </view>
+      <view class="text-chosen">
+        <text>{{randomResult.text}}</text>
+      </view>
+    </view>
+
+    <button bindtap="goBack" class="result-button">返回</button>
   </view>
-  <button bindtap="goBack">返回</button>
 </view>
