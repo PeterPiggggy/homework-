@@ -1,10 +1,18 @@
 Page({
   data: {
     optionList: [],
-    showDialogue: false,
+
+    showCreateMask: false,
+
     showResult: false,
+
     showDeleteIndex: null,
     showDeleteMask: false,
+
+    tempOptionText: "",
+    tempOptionIcon: "",
+    randomResult: null,
+
     optionIconsPath: [
       {path: "../../img/options_icon/步数.png"},
       {path: "../../img/options_icon/地址.png"},
@@ -14,16 +22,13 @@ Page({
       {path: "../../img/options_icon/文本.png"},
       {path: "../../img/options_icon/饮食.png"},
       {path: "../../img/options_icon/咨询.png"}
-    ],
-    tempIcon: "",
-    tempOption: "",
-    randomResult: null,
+    ]
   },
 
 
 
-  showDeleteMenu(e) {
-    const optionDeleteIndex = e.currentTarget.dataset.index
+  showDeleteMenu(index_to_delete) {
+    const optionDeleteIndex = index_to_delete.currentTarget.dataset.index
     this.setData({
       showDeleteIndex: optionDeleteIndex,
       showDeleteMask: true,
@@ -45,48 +50,45 @@ Page({
     })
   },
 
-
-
-  makeChoices() {
-    this.setData({showDialogue: true})
+  randomlyChooseIcon() {
+    const randomIconIndex = Math.floor(Math.random() * 8)
+    this.setData({tempOptionIcon: this.data.optionIconsPath[randomIconIndex].path})
   },
-
-
-
-  confirmChoice() {
-    const userInput = this.data.tempOption
+  chooseIcon(icon_path) {
+    const IconPath = icon_path.currentTarget.dataset.image
+    this.setData({tempOptionIcon: IconPath})
+  },
+  getOptionText(option_text) {
+    this.setData({tempOptionText: option_text.detail.value})
+  },
+  createOption() {
+    this.setData({showCreateMask: true})
+  },
+  confirmCreateOption() {
+    const userInput = this.data.tempOptionText
     if(userInput) {
       const newOption = {
         text: userInput,
-        icon: this.data.tempIcon
+        icon: this.data.tempOptionIcon
       }
       const newOptionList = this.data.optionList.concat([newOption])
       this.setData({
-        showDialogue: false,
-        tempOption: "",
+        showCreateMask: false,
+        tempOptionText: "",
         optionList: newOptionList
       })
     }
   },
-
-
-
-  refuseChoice() {
+  refuseCreateOption() {
     this.setData({
-      showDialogue: false,
-      tempOption: ""
+      showCreateMask: false,
+      tempOptionText: ""
     })
   },
 
 
-
-  getChoice(choice) {
-    this.setData({tempOption: choice.detail.value})
-  },
-
   
-
-  choose() {
+  RandomlyChoose() {
     const list = this.data.optionList
     if(list.length != 0) {
         const randomIndex = Math.floor(Math.random() * list.length)
@@ -96,24 +98,10 @@ Page({
         })
     }
   },
-
-
-
   goBack() {
     this.setData({
       showResult: false,
       randomResult: null
     })
-  },
-
-
-
-  randomlyChooseIcon() {
-    const randomIconIndex = Math.floor(Math.random() * 8)
-    this.setData({tempIcon: this.data.optionIconsPath[randomIconIndex].path})
-  },
-  chooseIcon(e) {
-    const IconPath = e.currentTarget.dataset.image
-    this.setData({tempIcon: IconPath})
   }
 })

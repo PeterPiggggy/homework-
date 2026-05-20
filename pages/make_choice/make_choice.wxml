@@ -26,14 +26,14 @@
 
 
   <view class="main-buttons">
-    <button bindtap="makeChoices">创建选项</button>
-    <button bindtap="choose">做出你的选择</button>
+    <button bindtap="createOption">创建选项</button>
+    <button bindtap="RandomlyChoose">我来选！！</button>
   </view>
 </view>
 
 
 
-<view class="mask" wx:if="{{showDialogue}}">
+<view class="mask" wx:if="{{showCreateMask}}">
   <view class="make-options">
     <view class="make-options-tips">
       <text>鉴于您的选择困难</text>
@@ -41,7 +41,7 @@
       <text>(•̀ᴗ•́)و ̑̑  </text>
     </view>
 
-    <input placeholder="输入选项吧！(ง •_•)ง" placeholder-style="color:#000000; font-size:50rpx" bindinput="getChoice" class="input-options"/>
+    <input placeholder="输入选项吧！(ง •_•)ง" placeholder-style="color:#000000; font-size:50rpx" bindinput="getOptionText" class="input-options"/>
       
     <view class="choose-icons">
       <view class="option-icon" bindtap="randomlyChooseIcon">
@@ -50,13 +50,13 @@
 
       <view wx:for="{{optionIconsPath}}" wx:key="index" class="option-icon" bindtap="chooseIcon" data-image="{{item.path}}">
         <image src="{{item.path}}" style="width:160rpx; height:160rpx"></image>
-        <view class="icon-mask" wx:if="{{tempIcon === item.path}}"></view>
+        <view class="icon-mask" wx:if="{{tempOptionIcon === item.path}}"></view>
       </view>
     </view>
 
     <view class="make-options-buttons">
-      <button bindtap="confirmChoice">确认</button>
-      <button bindtap="refuseChoice">取消</button>
+      <button bindtap="confirmCreateOption">确认</button>
+      <button bindtap="refuseCreateOption">取消</button>
     </view>
   </view>
 </view>

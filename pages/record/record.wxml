@@ -1,0 +1,10 @@
+<view class="hole-page">
+  <view class="welcome-tips">
+    <text>这里会保存你之前的随机选择</text>
+    <text>(✧ω✧)</text>
+  </view>
+
+  <view class="history-list">
+    <view></view>
+  </view>
+</view>
