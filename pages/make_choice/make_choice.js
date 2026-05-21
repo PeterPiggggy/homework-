@@ -2,6 +2,8 @@ Page({
   data: {
     optionList: [],
 
+    showClearAllMask: false,
+
     showCreateMask: false,
 
     showResult: false,
@@ -23,6 +25,49 @@ Page({
       {path: "../../img/options_icon/饮食.png"},
       {path: "../../img/options_icon/咨询.png"}
     ]
+  },
+
+
+
+  onShow() {
+    const app = getApp()
+
+    if(app.globalData.restoreList) {
+      this.setData({optionList: app.globalData.restoreList})
+      app.globalData.restoreList = null
+    }
+  },
+
+
+
+  recordOptions() {
+    const history = wx.getStorageSync("history") || [];
+    if(this.data.optionList.length){
+    history.push({
+      time: new Date().toLocaleString(),
+      list: this.data.optionList
+    });
+    wx.setStorageSync("history", history)
+    wx.showToast({
+      title: "搞定(˘◡˘)",
+      icon: "success",
+      duraion: 2000
+    })
+    }
+    else if(this.data.optionList.length == 0){
+      wx.showToast({
+        title: "没有选项呀QAQ",
+        icon: "error",
+        duraion: 2000
+      })
+    }
+    else if(history.length > 1000) {
+      wx.showToast({
+        title: "装不下(´ڡ`)",
+        icon: "error",
+        duraion: 2000
+      })
+    }
   },
 
 
@@ -49,6 +94,27 @@ Page({
       showDeleteMask: false
     })
   },
+
+
+
+  clearAll() {
+    this.setData({
+      showClearAllMask: true
+    })
+  },
+  confirmClearAll() {
+    this.setData({
+      optionList: [],
+      showClearAllMask: false
+    })
+  },
+  refuseClearAll() {
+    this.setData({
+      showClearAllMask: false
+    })
+  },
+
+
 
   randomlyChooseIcon() {
     const randomIconIndex = Math.floor(Math.random() * 8)

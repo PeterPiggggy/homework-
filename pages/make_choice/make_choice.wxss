@@ -18,7 +18,7 @@
   height: 200rpx;
   background-color: #696969;
 
-  margin: 50rpx 0 100rpx 0;
+  margin: 50rpx 0 50rpx 0;
   border: 5rpx solid #000000;
   border-radius: 20rpx;
   
@@ -34,7 +34,7 @@
   height: 740rpx;
   background-color: #b3acac;
 
-  margin-bottom: 100rpx;
+  margin-bottom: 25rpx;
   border: 5rpx solid #000000;
   border-radius: 20rpx;
 }
@@ -98,17 +98,43 @@
 .main-buttons {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 
 
-.make-options {
+.clear-all {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.make-options .make-options-tips {
+.clear-all .clear-all-tips {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 650rpx;
+  height: 200rpx;
+  background-color: #696969;
+
+  margin: 50rpx 0 200rpx 0;
+  border: 5rpx solid #000000;
+  border-radius: 20rpx;
+  
+  color: #ffffff;
+}
+
+
+
+.create-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.create-options .create-options-tips {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,7 +150,7 @@
 
   color: #ffffff;
 }
-.make-options .input-options {
+.create-options .input-options {
   width: 600rpx;
   height: 100rpx;
   background-color: #ffffff;
@@ -135,15 +161,17 @@
 
   color: #000000;
 }
-.make-options .choose-icons {
+.create-options .choose-icons {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 
   width: 600rpx;
   height: 600rpx;
+
+  margin-bottom: 100rpx;
 }
-.make-options .choose-icons .option-icon {
+.create-options .choose-icons .option-icon {
   position: relative;
 
   width: 160rpx;
@@ -153,7 +181,7 @@
   border: 5px solid #000000;
   border-radius: 20rpx;
 }
-.make-options .choose-icons .option-icon .icon-mask {
+.create-options .choose-icons .option-icon .icon-mask {
   position: absolute;
   top: 0;
   left: 0;
@@ -161,16 +189,6 @@
   width: 100%;
   height: 100%;
   background-color: #69696980;
-}
-.make-options .make-options-buttons {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  
-  width: 750rpx;
-
-  margin-top: 100rpx;
 }
 
 

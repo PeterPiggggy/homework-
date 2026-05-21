@@ -26,6 +26,10 @@
 
 
   <view class="main-buttons">
+    <view style="display:flex; width:750rpx; margin-bottom:50rpx">
+      <button bindtap="recordOptions">保存选项</button>
+      <button bindtap="clearAll">清空</button>
+    </view>
     <button bindtap="createOption">创建选项</button>
     <button bindtap="RandomlyChoose">我来选！！</button>
   </view>
@@ -33,9 +37,25 @@
 
 
 
+<view class="mask" wx:if="{{showClearAllMask}}">
+  <view class="clear-all">
+    <view class="clear-all-tips">
+      <text>你真的要删掉所有的选项嘛？</text>
+      <text>∑(っ °Д °;)っ</text>
+    </view>
+
+    <view style="display:flex; width:750rpx">
+      <button bindtap="confirmClearAll">确认！</button>
+      <button bindtap="refuseClearAll">我后悔了</button>
+    </view>
+  </view>
+</view>
+
+
+
 <view class="mask" wx:if="{{showCreateMask}}">
-  <view class="make-options">
-    <view class="make-options-tips">
+  <view class="create-options">
+    <view class="create-options-tips">
       <text>鉴于您的选择困难</text>
       <text>图标选择的第一个选项是随机项</text>
       <text>(•̀ᴗ•́)و ̑̑  </text>
@@ -54,7 +74,7 @@
       </view>
     </view>
 
-    <view class="make-options-buttons">
+    <view style="display:flex; width:750rpx;">
       <button bindtap="confirmCreateOption">确认</button>
       <button bindtap="refuseCreateOption">取消</button>
     </view>

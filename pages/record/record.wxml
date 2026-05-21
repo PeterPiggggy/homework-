@@ -1,10 +1,24 @@
 <view class="hole-page">
   <view class="welcome-tips">
-    <text>这里会保存你之前的随机选择</text>
-    <text>(✧ω✧)</text>
+    <text>长按历史记录可以删除</text>
+    <text>(๑•̀ㅂ•́)و✧</text>
   </view>
 
   <view class="history-list">
-    <view></view>
+    <view class="history" wx:for="{{historyList}}" wx:key="index"
+    bindtap="openHistory" data-index="{{index}}" bindlongpress="editHistory">
+      <text>{{item.time}}</text>
+
+      <view class="delete-menu-mask" wx:if="{{showDeleteMask}}" catchtap="missDeleteMenu"></view>
+
+      <view class="delete-menu" catchtap="deleteHistory" wx:if="{{showDeleteMask}}" data-index="{{index}}">
+        <text>删除</text>
+      </view>
+    </view>
+
+    <view wx:if="{{historyList.length === 0}}" class="history-list-tips">
+      <text>这里会保存你之前的随机选择</text>
+      <text>(✧ω✧)</text>
+    </view>
   </view>
 </view>

@@ -19,7 +19,7 @@
   height: 200rpx;
   background-color: #696969;
 
-  margin: 50rpx 0 100rpx 0;
+  margin: 50rpx 0 50rpx 0;
   border: 5rpx solid #000000;
   border-radius: 20rpx;
 
@@ -37,4 +37,59 @@
 
   border: 5rpx solid #000000;
   border-radius: 20rpx;
+}
+.history-list .history {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  width: 600rpx;
+  min-height: 150rpx;
+  background-color: #ffffff;
+
+  margin: 10rpx 25rpx 0 25rpx;
+  border-radius: 20rpx;
+}
+.history-list .history .delete-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+
+  border: 5rpx solid #ffffff;
+  border-radius: 0 20rpx 0 0;
+
+  width: 100rpx;
+  height: 70rpx;
+  background-color: #ff0000;
+
+  color: #ffffff;
+}
+.history-list .history-list-tips {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 650rpx;
+  height: 900rpx;
+
+  color: #000000;
+}
+
+
+
+.delete-menu-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 998;
+
+  background-color: #69696900;
+
+  font-size: 50rpx
 }
